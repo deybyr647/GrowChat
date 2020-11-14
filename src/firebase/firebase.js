@@ -1,4 +1,6 @@
-import app from 'firebase/app';
+import firebase from 'firebase/app';
+import "firebase/auth";
+import "firebase/firestore";
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -18,10 +20,11 @@ const prodConfig = {};
 
 const config = process.env.NODE_ENV === 'development' ? devConfig : prodConfig;
 
-class Firebase{
-    constructor(){
-        app.initializeApp(config);
-    }
-}
+console.log(config);
 
-export default Firebase;
+firebase.initializeApp(config);
+
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+
+export {auth, firestore};

@@ -8,10 +8,12 @@ import {Nav, Navbar} from 'react-bootstrap';
 
 import Login from './pages/signin';
 import SignUp from './pages/signup';
+import Account from './pages/account';
 
 const Navigation = () => {
   return(
     <>
+    <Router>
       <Navbar variant='light' expand='lg' bg='light'>
         <Navbar.Brand as={Link} to={ROUTES.LANDING}>GrowChat</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -26,18 +28,21 @@ const Navigation = () => {
       </Navbar>
 
       <Switch>
-        <Route path={ROUTES.LOGIN} component={Login}/>
-        <Route path={ROUTES.SIGN_UP} component={SignUp}/>
+        
       </Switch>
+    </Router>
     </>
   )
 }
 
 const App = () => {
+  const user = null;
+
   return(
-    <Router>
+    <>
       <Navigation/>
-    </Router>
+      {user ? <Account/> : <Login/>}
+    </>
   )
 }
 

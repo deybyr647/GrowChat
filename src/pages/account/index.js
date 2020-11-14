@@ -2,9 +2,9 @@ import './account.css';
 
 const Account = () => {
     return(
-        <section className='switch'>
-            
-        </section>
+        <div className='container'>
+            <h1>Hello World</h1>
+        </div>
     )
 }
 
