@@ -1,5 +1,9 @@
 import { useState } from 'react';
+import {Link} from '@reach/router';
+import * as ROUTES from '../../constants/routes';
+
 import './signup.css';
+import logo from '../../images/growchatname.png';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
@@ -31,15 +35,15 @@ const SignUp = () => {
         <div className='sign-up-form'>
             <div className='top'>
                 <a href='profile.html'>
-                    <img alt='' src='photo/growchatname.png'/>
+                    <img alt='' src={logo}/>
                 </a>
                 <p>Sign Up</p>
             </div>
 
             <form>
-                <input type='text' name='userEmail' placeholder='Email or Phone Number' value={email} onChange={e => changeHandler(e)} required/>
+                <input type='text' name='userEmail' placeholder='Email' value={email} onChange={e => changeHandler(e)} required/>
                 <input type='text' name='userFullName' placeholder='Full Name' value={fullName} onChange={e => changeHandler(e)} required/>
-                <input type='text' name='userName' placeholder='User Name' value={userName} onChange={e => changeHandler(e)} required/>
+                <input type='text' name='userName' placeholder='Username' value={userName} onChange={e => changeHandler(e)} required/>
                 <input type='password' name='userPassword' placeholder='Password' value={password} onChange={e => changeHandler(e)} required/>
 
                 <div className='form-group'>
@@ -47,7 +51,7 @@ const SignUp = () => {
                     <button onClick={e => createUser(e)} name='submit'>Submit</button>
                 </div>
 
-                <p>Already have an account? <a href='login.html'>Login Here</a></p>
+                <p>Already have an account? <Link to={ROUTES.LOGIN}>Log In</Link></p>
             </form>
         </div>
     )

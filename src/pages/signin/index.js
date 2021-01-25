@@ -1,5 +1,10 @@
 import { useState } from 'react';
+import {Link} from '@reach/router';
+
+import * as ROUTES from '../../constants/routes';
+import logo from '../../images/logo.png';
 import './index.css'
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -23,7 +28,7 @@ const Login = () => {
         <div className='login-form'>
             <div className='top'>
                 <a href='#lol'>
-                    <img alt='logo' src='null.png'/>
+                    <img alt='logo' src={logo}/>
                 </a>
                 <hr/>
                 <p>Log In</p>
@@ -35,10 +40,10 @@ const Login = () => {
 
                 <div className='form-group'>
                     <br/>
-                    <button onClick={e => authHandler(e, email, password)} name='submit'>Submit</button>
+                    <button onClick={e => authHandler(e, email, password)} name='submit'>Sign In</button>
                 </div>
 
-                <p>Don't Have An Account? <a href='#lol2'>Sign Up</a></p>
+                <p>Don't Have An Account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link></p>
             </form>
         </div>
     )

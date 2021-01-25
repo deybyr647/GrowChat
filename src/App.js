@@ -1,19 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 
 import * as ROUTES from './constants/routes';
 
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {Router, Link} from '@reach/router';
 import {Nav, Navbar} from 'react-bootstrap';
 
 import Login from './pages/signin';
 import SignUp from './pages/signup';
 import Account from './pages/account';
 
-const Navigation = () => {
+/*const Navigation = () => {
   return(
-    <>
-    <Router>
       <Navbar variant='light' expand='lg' bg='light'>
         <Navbar.Brand as={Link} to={ROUTES.LANDING}>GrowChat</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -26,23 +23,19 @@ const Navigation = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
-      <Switch>
-        
-      </Switch>
-    </Router>
-    </>
   )
-}
+}*/
 
 const App = () => {
-  const user = null;
+  const user = !true;
 
   return(
-    <>
-      <Navigation/>
-      {user ? <Account/> : <Login/>}
-    </>
+      user ? <Account/> 
+      : <Router>
+        <SignUp path={ROUTES.SIGN_UP}/>
+        <Login path={ROUTES.LOGIN}/>
+
+      </Router>
   )
 }
 

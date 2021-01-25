@@ -1,0 +1,342 @@
+/* ==========================================================================
+   NavBar
+   ========================================================================== */
+
+/*Section and Row*/
+.switch {
+    height: 60px;
+    background-color: rgba(42, 156, 38, 0.842);
+    border-bottom-style: solid;
+    border-bottom-color: rgba(28, 126, 25, 0.842);
+    border-width: thin;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+}
+
+.top .row {
+    width: 1519.2px;
+    height: 60px;
+}
+
+/*CheckBox and Col*/
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    visibility: hidden;
+    display: none;
+}
+
+.check {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background: black;
+    curser: pointer;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: ease-in 0.5s;
+}
+
+input[type="checkbox"]:checked~.check {
+    background: #F8E9D7;
+    box-shadow: 0 0 0 12000px black;
+}
+
+.check:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: #F8E9D7;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: 0.5s
+}
+
+input[type="checkbox"]:checked~.check:before {
+    transform: translate(50px);
+}
+
+.check:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: black;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: 0.5s
+}
+
+input[type="checkbox"]:checked~.check:after {
+    transform: translate(0px);
+}
+
+.col-md-2 label {
+    margin: 18px 8px 0px 8px;
+}
+
+
+/*SearchBar and Col*/
+input[type="text"] {
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    width: 300px;
+    font-weight: normal;
+    background: rgb(255, 255, 255);
+}
+
+input:focus {
+    outline: none;
+}
+
+.searchbar {
+    padding: 2px;
+    border-radius: 8px;
+    border-style: none;
+    border-width: thin;
+    width: auto;
+    margin: 12px 0px 8px 400px;
+    background: rgb(255, 255, 255);
+    position: relative;
+}
+
+.col-md-6 label {
+    width: 40%;
+}
+
+.col-md-6 input {
+    width: 80%;
+}
+
+.col-md-6 i {
+    margin: 5px;
+    color: green;
+}
+
+.col-md-6 {
+    height: 60px
+}
+
+/*Image and DropDown*/
+.fb-image-profile-thumbnail {
+    height: 46px;
+    width: 46px;
+    float: right;
+    margin: 5px 0px 15px 10px;
+}
+
+.fb-image-profile-thumbnail:hover {
+    opacity: 90%
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin: 10px 5px 0px 282px;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu i {
+    margin: 8px 8px 8px 0px;
+}
+
+/* ==========================================================================
+     Under Nav
+     ========================================================================== */
+
+
+/*Profile Section*/
+.profile {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.profilecon .container {
+    background-color: white;
+    border-radius: 4px;
+    padding: 0px 0px 0px 0px;
+}
+
+.fb-image-lg {
+    margin-top: -21px;
+    border-radius: 4px;
+}
+
+.fb-profile-text {
+    margin-left: 320px;
+}
+
+
+/*Post and Contact Section*/
+/*Background*/
+.post {
+    background-color: white;
+    border-radius: 4px;
+    padding: 1px 20px 0px 20px;
+    margin-left: -15px;
+}
+
+.postandcontact .container .col-md-4 {
+    background-color: white;
+    border-radius: 4px;
+    padding: 1px 20px 0px 20px;
+}
+
+/*Post Col*/
+.postandcontact p {
+    height: 500px;
+}
+
+
+/*Community Col*/
+.postandcontact .row .communities img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.communities .row {
+    margin: 8px 0px 8px 0px;
+}
+
+.postandcontact .row .friends img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.friends .row {
+    margin: 8px 0px 8px 0px;
+}
+
+
+/*Text*/
+.postandcontact h2 {
+    font-size: 21px;
+}
+
+.postandcontact h3 {
+    font-size: 18px;
+}
+
+.postandcontact h4 {
+    font-size: 15px;
+}
+
+
+/*DropDown*/
+.dropdownsort {
+    width: 70px;
+}
+
+.dropdown-menusort {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menusort button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: none;
+    background-color: #f9f9f9;
+}
+
+.dropdown-menusort button {
+    width: 120px;
+    text-align: justify;
+}
+
+.dropdown-menusort button:hover {
+    background-color: #f1f1f1
+}
+
+.dropdownsort:hover .dropdown-menusort {
+    display: block;
+}
+
+
+/* ==========================================================================
+     Author's custom styles
+     ========================================================================== */
+
+body {
+    font-family: 'Roboto', serif;
+    background-color: #F8E9D7;
+    margin: 0;
+    padding: 0;
+
+}
+
+.fb-profile img.fb-image-lg {
+    z-index: 1;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 300px;
+}
+
+.fb-image-profile {
+    margin: -90px 10px 0px 50px;
+    z-index: 2;
+    width: 20%;
+    border-radius: 50%;
+}
+
+@media (max-width:768px) {
+
+    .fb-profile-text>h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .fb-image-profile {
+        margin: -45px 5px 0px 25px;
+        z-index: 2;
+        width: 20%;
+
+    }
+
+    
+}
+
+@media (max-width:200px) {
+        .fb-profile img.fb-image-lg {
+            z-index: 1;
+            width: 100%;
+            margin-bottom: 10px;
+            height: 300px;
+            margin: -90px 0px 0px 0px;
+        }
+
+         .col-md-8 {
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+    }
