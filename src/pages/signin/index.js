@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import {Link} from '@reach/router';
+import {auth} from '../../firebase/firebase';
 
 import * as ROUTES from '../../constants/routes';
 import logo from '../../images/logo.png';
-import './index.css'
+import './signin.css';
 
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
 
     const authHandler = (e, email, password) => {
         e.preventDefault();
+        auth.signInWithEmailAndPassword(email, password)
+        .catch(err => {
+            setError("Error signing in with password and email!");
+            console.error(error, err);
+        });
     }
 
     const changeHandler = (e) => {

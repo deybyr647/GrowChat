@@ -20,11 +20,46 @@ const prodConfig = {};
 
 const config = process.env.NODE_ENV === 'development' ? devConfig : prodConfig;
 
-console.log(config);
-
 firebase.initializeApp(config);
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-export {auth, firestore};
+const getUserDocument = async uid => {
+    if(!uid) return null;
+
+    try{
+        const userDocument = await firestore.doc(`users/${uid}`).get();
+        return{
+            uid,
+            ...userDocument.data()
+        }
+    } catch(err){
+        console.error("Error fetching user", err);
+    }
+}
+
+const generateUserDocument = async (user, additionalData) => {
+    if(!user) return;
+    const userRef = firestore.doc(`users/${user.uid}`);
+    const snapshot = await userRef.get();
+
+    if(!snapshot.exists){
+        const {fullName, userName, email, photoURL} = user;
+        try{
+            await userRef.set({
+                fullName,
+                userName,
+                email,
+                photoURL,
+                ...additionalData
+            });
+        } catch(err){
+            console.error("Error creating user document", err);
+        }
+    }
+
+    return getUserDocument(user.uid);
+}
+
+export {auth, firestore, generateUserDocument};

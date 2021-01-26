@@ -1,23 +1,32 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {Link} from '@reach/router';
 import * as ROUTES from '../../constants/routes';
+import {auth, generateUserDocument} from '../../firebase/firebase';
 
 import './signup.css';
 import logo from '../../images/growchatname.png';
 
 const SignUp = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [userName, setUsername] = useState('');
-    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [userName, setUsername] = useState("");
+    const [fullName, setFullName] = useState("");
     const [error, setError] = useState(null);
 
-    const createUser = (e, email, password) => {
+    const createUser = async (e, email, password) => {
         e.preventDefault();
-        setEmail('');
-        setPassword('');
-        setUsername('');
-        setFullName('');
+        try{
+            const {user} = await auth.createUserWithEmailAndPassword(email, password);
+            generateUserDocument(user, {userName, fullName});
+        } catch(err){
+            setError(err);
+            console.error("Error!!", err);
+        }
+
+        setEmail("");
+        setPassword("");
+        setUsername("");
+        setFullName("");
     }
 
     const changeHandler = (e) => {
@@ -48,7 +57,7 @@ const SignUp = () => {
 
                 <div className='form-group'>
                     <br/>
-                    <button onClick={e => createUser(e)} name='submit'>Submit</button>
+                    <button onClick={e => createUser(e, email, password)} name='submit'>Submit</button>
                 </div>
 
                 <p>Already have an account? <Link to={ROUTES.LOGIN}>Log In</Link></p>
