@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import {Link} from '@reach/router';
-import {auth} from '../../firebase/firebase';
+import {auth} from '../firebase/firebase';
 
-import * as ROUTES from '../../constants/routes';
-import logo from '../../images/logo.png';
-import './signin.css';
+import * as ROUTES from '../constants/routes';
+import logo from '../images/logo.png';
+import '../styles/auth.css';
 
 
 const Login = () => {
@@ -19,6 +19,9 @@ const Login = () => {
             setError("Error signing in with password and email!");
             console.error(error, err);
         });
+
+        setEmail('');
+        setPassword('');
     }
 
     const changeHandler = (e) => {
@@ -26,8 +29,6 @@ const Login = () => {
 
         if(name === 'userEmail') setEmail(value);
         else if(name === 'userPassword') setPassword(value);
-
-        console.log(email, password);
     }
 
     return(

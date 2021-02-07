@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
 import {Link} from '@reach/router';
-import * as ROUTES from '../../constants/routes';
-import {auth, generateUserDocument} from '../../firebase/firebase';
+import * as ROUTES from '../constants/routes';
+import {auth, generateUserDocument} from '../firebase/firebase';
 
-import './signup.css';
-import logo from '../../images/growchatname.png';
+import '../styles/auth.css';
+import logo from '../images/growchatname.png';
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
