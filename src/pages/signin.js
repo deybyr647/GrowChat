@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Link} from '@reach/router';
+import {Link, useNavigate} from '@reach/router';
 import {auth} from '../firebase/firebase';
 
 import * as ROUTES from '../constants/routes';
@@ -11,10 +11,12 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const authHandler = (e, email, password) => {
         e.preventDefault();
         auth.signInWithEmailAndPassword(email, password)
+        .then(() => navigate(ROUTES.ACCOUNT))
         .catch(err => {
             setError("Error signing in with password and email!");
             console.error(error, err);
@@ -47,7 +49,7 @@ const Login = () => {
 
                 <div className='form-group'>
                     <br/>
-                    <button onClick={e => authHandler(e, email, password)} name='submit'>Sign In</button>
+                    <button onClick={e => {authHandler(e, email, password)}} name='submit'>Sign In</button>
                 </div>
 
                 <p>Don't Have An Account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link></p>

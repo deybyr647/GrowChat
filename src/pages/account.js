@@ -1,12 +1,20 @@
 import {useContext} from 'react';
-import {Link, Router} from '@reach/router';
+import {Link, Router, useNavigate} from '@reach/router';
 
 import {UserContext} from '../providers/userProvider';
 import {auth} from '../firebase/firebase';
+import * as ROUTES from '../constants/routes';
 
 import {Container, Row, Col, Image, Navbar, Form, FormControl, ListGroup, Card, CardColumns, Dropdown} from 'react-bootstrap';
 
 const Navigation = ({profileImage}) => {
+    const navigate = useNavigate();
+
+    const signOutHandler = () => {
+        auth.signOut();
+        navigate(ROUTES.LOGIN);
+    }
+
     return(
         <Navbar bg='light' variant='light' className='d-flex justify-content-between'>
             <Form.Check
@@ -19,7 +27,7 @@ const Navigation = ({profileImage}) => {
                 <FormControl type='text' placeholder='Search' size='md'/>
             </Form>
             
-            <Navbar.Brand className='mx-2' onClick={() => auth.signOut()}>{profileImage ? <Image src={profileImage} alt='pfp' width={60} rounded/> : "Account"}</Navbar.Brand>
+            <Navbar.Brand className='mx-2' onClick={() => signOutHandler()}>{profileImage ? <Image src={profileImage} alt='pfp' width={60} rounded/> : "Account"}</Navbar.Brand>
         </Navbar>
     )
 }
@@ -73,6 +81,7 @@ const ProfilePage = () => {
                                 <h4>{fullName}</h4>
                                 <h6>@{userName}</h6>
                                 <p>Just some caption....</p>
+                                <Link to={ROUTES.MESSAGES}>Chat Test</Link>
                             </Col>
                                 
                         </Row>

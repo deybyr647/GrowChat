@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import {Link} from '@reach/router';
+import {Link, useNavigate} from '@reach/router';
 import * as ROUTES from '../constants/routes';
 import {auth, generateUserDocument} from '../firebase/firebase';
 
@@ -12,12 +12,14 @@ const SignUp = () => {
     const [userName, setUsername] = useState("");
     const [fullName, setFullName] = useState("");
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const createUser = async (e, email, password) => {
         e.preventDefault();
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
             generateUserDocument(user, {userName, fullName});
+            navigate(ROUTES.ACCOUNT);
         } catch(err){
             setError(err);
             console.error("Error!!", err);

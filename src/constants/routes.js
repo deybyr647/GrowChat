@@ -1,10 +1,8 @@
-const LANDING = '/';
-const SIGN_UP = 'signup';
 const LOGIN = '/';
-const HOME = '/home';
-const ACCOUNT = '/account';
-const ADMIN = '/admin';
-const PASSWORD_FORGET = '/pw-forget';
-const MESSAGES = '/messages';
+const SIGN_UP = 'signup';
 
-export {LANDING, SIGN_UP, LOGIN, HOME, ACCOUNT, ADMIN, PASSWORD_FORGET, MESSAGES};
+const ACCOUNT = '/';
+const PASSWORD_FORGET = '/pw-forget';
+const MESSAGES = '/chat';
+
+export {SIGN_UP, LOGIN, ACCOUNT, PASSWORD_FORGET, MESSAGES};
