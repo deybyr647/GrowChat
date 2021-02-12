@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {Link, Router, useNavigate} from '@reach/router';
+import {useNavigate} from '@reach/router';
 
 import {UserContext} from '../providers/userProvider';
 import {auth} from '../firebase/firebase';
@@ -21,6 +21,7 @@ const Navigation = ({profileImage}) => {
                 type='switch'
                 id='custom-switch'
                 className='mx-2'
+                onClick={() => navigate(ROUTES.MESSAGES)}
             />
 
             <Form className=''>
@@ -81,7 +82,6 @@ const ProfilePage = () => {
                                 <h4>{fullName}</h4>
                                 <h6>@{userName}</h6>
                                 <p>Just some caption....</p>
-                                <Link to={ROUTES.MESSAGES}>Chat Test</Link>
                             </Col>
                                 
                         </Row>
